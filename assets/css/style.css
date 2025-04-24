@@ -5825,6 +5825,7 @@ footer .footer-item .footer-about ul {
 footer .footer-item .footer-about ul li {
     list-style: none;
     margin-bottom: 6px;
+    display: flex;
 }
 
 footer .footer-item .footer-about ul li span {
