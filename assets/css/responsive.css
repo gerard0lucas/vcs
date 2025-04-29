@@ -483,6 +483,7 @@
     }
     .subscribe form input:last-child {
         padding: 17px;
+        width: 100%;
     }
     .error-page .error-content h2 {
         font-size: 100px;
