@@ -1,0 +1,30 @@
+.facility-item {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.facility-item:nth-child(1) {
+    transition-delay: 0.2s;
+}
+.facility-item:nth-child(2) {
+    transition-delay: 0.4s;
+}
+.facility-item:nth-child(3) {
+    transition-delay: 0.6s;
+}
+.facility-item:nth-child(4) {
+    transition-delay: 0.8s;
+}
+
+.facility-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1px;
+}
+
+.facility-items.in-view .facility-item {
+    opacity: 1;
+    transform: translateY(0);
+}

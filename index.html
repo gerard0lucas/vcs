@@ -50,8 +50,94 @@
     <link href="assets/css/responsive.css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="animate.css">
 </head>
 </head>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting){
+                    entry.target.classList.add('in-view');
+                }
+            });
+        }, { threshold: 0.2 });
+    
+        const facilityItems = document.querySelector('.facility-items');
+        observer.observe(facilityItems);
+    });
+    </script>
+    
+
+<style>
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.6);
+      display: none; /* Hidden by default */
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .popup-content {
+      position: relative;
+      background: #fff;
+      padding: 10px;
+      border-radius: 8px;
+      max-width: 800px;
+      width: 90%;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 5px;
+      right: 10px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    img {
+      width: 100%;
+      border-radius: 8px;
+    }
+  </style>
+
+<div class="popup-overlay" id="popup">
+    <div class="popup-content">
+      <span class="close-btn" id="close-btn">&times;</span>
+      <img src="./images/vk.jpg" alt="Popup Image">
+    </div>
+  </div>
+
+  <script>
+    const popup = document.getElementById('popup');
+    const closeBtn = document.getElementById('close-btn');
+
+    // Show popup after 5 seconds
+    window.onload = () => {
+      setTimeout(() => {
+        popup.style.display = 'flex';
+      }, 5000); // 5000ms = 5 seconds
+    };
+
+    // Close when clicking close button
+    closeBtn.addEventListener('click', () => {
+      popup.style.display = 'none';
+    });
+
+    // Close when clicking outside popup content
+    popup.addEventListener('click', (e) => {
+      if (e.target === popup) {
+        popup.style.display = 'none';
+      }
+    });
+  </script>
+
 
 <body id="scroll-top">
 
@@ -106,12 +192,20 @@
         <div class="header-top">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <a class="logo" href="index.html"><img style="width: 70px;" src="images/vikas logo.png" alt="logo"
                                 class="img-responsive"></a>
                     </div>
-                    <div class="col-md-9">
+                    <div class="col-md-10">
                         <ul class="top-contents">
+                            <li>
+                                <i class="icon fa-solid fa-location-dot"></i>
+
+                                <div class="content">
+                                    <p>Location</p>
+                                    <span>Bangaluru</span>
+                                </div>
+                            </li>
                             <li>
                                 <i class="icon fa-solid fa-phone"></i>
                                 <div class="content">
@@ -197,15 +291,15 @@
                         <div class="banner-content">
                             <h3>Welcome to</h3>
                             <h2> Vikas Central School</h2>
-                            <p ">
+                            <p>
                                 We focus on igniting the unique talents and skills of the students at very early
                                 stages. Install them a habit of winning and bring overall development among the
                                 young children.
                             </p>
-                            <ul class="justify-content-center">
+                            <!-- <ul class="justify-content-center">
                                 <li><a href="#" class="button-default">Read More</a></li>
                                 <li><a href="#" class="button-default">Buy Now</a></li>
-                            </ul>
+                            </ul> -->
                         </div>
                         <!-- banner-content -->
                     </div>
@@ -218,15 +312,15 @@
                         <div class="banner-content">
                             <h3>Welcome to</h3>
                             <h2> Vikas Central School</h2>
-                            <p ">
+                            <p>
                                 We focus on igniting the unique talents and skills of the students at very early
                                 stages. Install them a habit of winning and bring overall development among the
                                 young children.
                             </p>
-                            <ul class="justify-content-center">
+                            <!-- <ul class="justify-content-center">
                                 <li><a href="#" class="button-default">Read More</a></li>
                                 <li><a href="#" class="button-default">Buy Now</a></li>
-                            </ul>
+                            </ul> -->
                         </div>
                         <!-- banner-content -->
                     </div>
@@ -260,7 +354,7 @@
     </section>
     <!-- banner -->
     <!-- Banner End here -->
-
+    <br><br>
 
     <!-- facility Start here -->
     <section class="facility facility-two">
@@ -661,7 +755,7 @@
     <!-- features -->
     <!-- Features End here -->
 
-      <!-- About Start here -->
+      <!-- About Start here --> 
       <section style="padding-bottom: 0;" class="about about-two padding-120">
         <div class="container">
             <div style="max-width: 900px;" class="section-header">
@@ -735,81 +829,30 @@
                     <div class="swiper-wrapper">
                         <div class="testimonial-item swiper-slide">
                             <div class="testimonial-details">
-                                <p>Vikas Central School has been an excellent platform for my child's academic and personal growth. The school's infrastructure and teaching methodologies are top-notch. I am grateful for the attention and care they provide to every student.</p>
-                                <h4>Ravi Kumar <span>Parent</span></h4>
+                                <p>I'm Kumar, and both my kids have been studying at Vika Central School in J.C. Nagar, Kurubarahalli, since Pre-KG. The school's focus on communication is excellent—comparable to international standards. The teaching, coaching, and overall development are outstanding. Recently, Yogi Sir received the FAP Award, further proving the school’s quality. I strongly recommend Vika Central School to all parents nearby!</p>
+                                <h4>Kumar <span>Parent</span></h4>
                                 <img src="images/testimonial/testimonial_icon_01.jpg" alt="testimonial icon"
                                     class="img-responsive">
                             </div>
                             <div class="testimonial-image">
-                                <img src="images/testimonial/testimonial_01.jpg" alt="client image"
+                                <img src="./images/t1.png" alt="client image"
                                     class="img-responsive">
                             </div>
                         </div>
                         <!-- testimonial-item -->
                         <div class="testimonial-item swiper-slide">
                             <div class="testimonial-details">
-                                <p>The educators at Vikas Central School not only focus on academics but also help develop critical thinking and creativity in students. My child loves going to school every day, and we are extremely happy with the school's values and approach.</p>
-                                <h4>Priya Sharma <span>Parent</span></h4>
+                                <p>Both my kids have been studying at Vika Central School, J.C. Nagar, Kurubarahalli, since Pre-KG. The school is excellent in academics and outstanding in building communication skills—comparable to international schools. The teachers are very supportive and focus on the overall development of the child. They also recently received the FAP Award for best school. I highly recommend Vika Central School for your child’s bright future.</p>
+                                <h4>Vaibhav paliwal<span> Parent</span></h4>
                                 <img src="images/testimonial/testimonial_icon_02.jpg" alt="testimonial icon"
                                     class="img-responsive">
                             </div>
                             <div class="testimonial-image">
-                                <img src="images/testimonial/testimonial_02.jpg" alt="client image"
+                                <img src="./images/t2.png" alt="client image"
                                     class="img-responsive">
                             </div>
                         </div>
-                        <!-- testimonial-item -->
-                        <div class="testimonial-item swiper-slide">
-                            <div class="testimonial-details">
-                                <p>Vikas Central School has exceeded our expectations in every way. The school provides a nurturing environment, excellent teaching, and a variety of extracurricular activities that enrich my child's overall development.</p>
-                                <h4>Suresh Rao <span>Parent</span></h4>
-                                <img src="images/testimonial/testimonial_icon_03.jpg" alt="testimonial icon"
-                                    class="img-responsive">
-                            </div>
-                            <div class="testimonial-image">
-                                <img src="images/testimonial/testimonial_03.jpg" alt="client image"
-                                    class="img-responsive">
-                            </div>
-                        </div>
-                        <!-- testimonial-item -->
-                        <div class="testimonial-item swiper-slide">
-                            <div class="testimonial-details">
-                                <p>As a parent, I am thrilled with the academic rigor and personal growth my child has experienced at Vikas Central School. The school's leadership and faculty are deeply invested in the students' success and well-being.</p>
-                                <h4>Anjali Desai <span>Parent</span></h4>
-                                <img src="images/testimonial/testimonial_icon_01.jpg" alt="testimonial icon"
-                                    class="img-responsive">
-                            </div>
-                            <div class="testimonial-image">
-                                <img src="images/testimonial/testimonial_01.jpg" alt="client image"
-                                    class="img-responsive">
-                            </div>
-                        </div>
-                        <!-- testimonial-item -->
-                        <div class="testimonial-item swiper-slide">
-                            <div class="testimonial-details">
-                                <p>Vikas Central School has been a great choice for our family. The teachers are dedicated, the facilities are outstanding, and the environment is welcoming. My child is flourishing academically and socially, and we couldn’t ask for more.</p>
-                                <h4>Kavita Iyer <span>Parent</span></h4>
-                                <img src="images/testimonial/testimonial_icon_02.jpg" alt="testimonial icon"
-                                    class="img-responsive">
-                            </div>
-                            <div class="testimonial-image">
-                                <img src="images/testimonial/testimonial_02.jpg" alt="client image"
-                                    class="img-responsive">
-                            </div>
-                        </div>
-                        <!-- testimonial-item -->
-                        <div class="testimonial-item swiper-slide">
-                            <div class="testimonial-details">
-                                <p>My child’s experience at Vikas Central School has been fantastic. The school fosters a culture of excellence and helps each student reach their full potential. I am so glad to be a part of this wonderful school community.</p>
-                                <h4>Manoj Patel <span>Parent</span></h4>
-                                <img src="images/testimonial/testimonial_icon_03.jpg" alt="testimonial icon"
-                                    class="img-responsive">
-                            </div>
-                            <div class="testimonial-image">
-                                <img src="images/testimonial/testimonial_03.jpg" alt="client image"
-                                    class="img-responsive">
-                            </div>
-                        </div>
+                       
                     </div>
                 </div>
             </div>
@@ -826,7 +869,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-5 col-xs-12">
-                    <h3>Join Our Newsletter</h3>
+                    <h3>For Admission Enquiry</h3>
                 </div>
                 <div class="col-lg-7 col-xs-12">
                     <form action="/">

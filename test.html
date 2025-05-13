@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vikas Central School - Awards</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #92278f 0%, #3b0764 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .trophy-icon {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .trophy-icon::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: radial-gradient(circle, rgba(255,215,0,0.4) 0%, rgba(255,215,0,0) 70%);
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .trophy-icon:hover::after {
+            opacity: 1;
+        }
+        
+        .award-card {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        
+        .award-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(146, 39, 143, 0.15);
+        }
+        
+        .slider-container {
+            perspective: 1000px;
+        }
+        
+        .slide {
+            transition: transform 0.5s ease, opacity 0.5s ease;
+            transform-style: preserve-3d;
+        }
+        
+        .slider-dot {
+            transition: all 0.3s ease;
+        }
+        
+        .slider-dot:hover {
+            transform: scale(1.2);
+        }
+        
+        .back-to-top {
+            transition: all 0.3s ease;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(146, 39, 143, 0.4);
+        }
+        
+        .newsletter-input {
+            transition: all 0.3s ease;
+        }
+        
+        .newsletter-input:focus {
+            box-shadow: 0 0 0 3px rgba(146, 39, 143, 0.3);
+        }
+        
+        .social-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-3px) scale(1.1);
+        }
+        
+        .footer-link {
+            position: relative;
+        }
+        
+        .footer-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #92278f;
+            transition: width 0.3s ease;
+        }
+        
+        .footer-link:hover::after {
+            width: 100%;
+        }
+        
+        .menu-item {
+            position: relative;
+        }
+        
+        .menu-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #92278f;
+            transition: width 0.3s ease;
+        }
+        
+        .menu-item:hover::after {
+            width: 100%;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#92278f',
+                        secondary: '#3b0764',
+                        accent: '#f59e0b',
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans bg-gray-50">
+ 
+
+    <!-- Hero Banner -->
+    <section class="relative bg-gradient-to-r from-primary to-secondary py-20 text-white">
+        <div class="absolute inset-0 bg-black opacity-30"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-3xl mx-auto text-center animate-fade-in">
+                <div class="trophy-icon inline-block mb-6">
+                    <i class="fas fa-trophy text-6xl text-accent"></i>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Our Achievements & Awards</h1>
+                <p class="text-xl md:text-2xl mb-8">Celebrating Excellence in Academics, Sports & Cultural Activities</p>
+                <div class="flex justify-center">
+                    <a href="#awards" class="bg-white text-primary font-bold px-6 py-3 rounded-full hover:bg-gray-100 transition duration-300 inline-flex items-center">
+                        Explore Awards <i class="fas fa-arrow-down ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Awards Section -->
+    <section id="awards" class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 animate-fade-in">
+                <span class="inline-block bg-primary bg-opacity-10 text-primary px-4 py-1 rounded-full text-sm font-semibold mb-3">AWARDS & RECOGNITIONS</span>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 gradient-text">Proud Moments at Vikas Central School</h2>
+                <p class="max-w-2xl mx-auto text-gray-600">Our students and faculty have consistently excelled in various fields, bringing honor to our institution. Here are some of our notable achievements.</p>
+            </div>
+            
+            <!-- Award 1 -->
+            <div class="award-card bg-white rounded-xl shadow-md overflow-hidden mb-16 animate-fade-in delay-100">
+                <div class="md:flex">
+                    <div class="md:w-1/2 p-6 md:p-0 slider-container">
+                        <div class="slider h-80 md:h-full overflow-hidden relative" data-slider-id="1">
+                            <div class="slide absolute inset-0 transition-all duration-500">
+                                <img src="./assets/awards/11.jpg" alt="SSLC Results Award" class="w-full h-full object-cover">
+                            </div>
+                            <div class="slide absolute inset-0 transition-all duration-500 opacity-0">
+                                <img src="./assets/awards/11.jpg" alt="SSLC Results Award" class="w-full h-full object-cover">
+                            </div>
+                           
+                        </div>
+                        <div class="slider-nav absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                            <div class="slider-dot w-3 h-3 bg-white bg-opacity-50 rounded-full cursor-pointer active" data-index="0"></div>
+                            <div class="slider-dot w-3 h-3 bg-white bg-opacity-50 rounded-full cursor-pointer" data-index="1"></div>
+                            <div class="slider-dot w-3 h-3 bg-white bg-opacity-50 rounded-full cursor-pointer" data-index="2"></div>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 p-8">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-primary bg-opacity-10 text-primary p-2 rounded-full mr-3">
+                                <i class="fas fa-medal text-xl"></i>
+                            </div>
+                            <span class="text-sm font-semibold text-primary">ACADEMIC EXCELLENCE</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-800">100% Results in SSLC 2021-2022</h3>
+                        <p class="text-gray-600 mb-6">Vikas Central School takes immense pride in announcing that we were honored by the government for achieving 100% results in the SSLC examinations for the academic year 2021–2022. This remarkable milestone reflects the relentless efforts of our dedicated faculty, the unwavering determination of our students, and the continuous support from our parents and management.</p>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <i class="fas fa-calendar-alt mr-2"></i>
+                            <span>Academic Year 2021-2022</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Award 2 -->
+            <div class="award-card bg-white rounded-xl shadow-md overflow-hidden mb-16 animate-fade-in delay-200">
+                <div class="md:flex flex-row-reverse">
+                    <div class="md:w-1/2 p-6 md:p-0 slider-container">
+                        <div class="slider h-80 md:h-full overflow-hidden relative" data-slider-id="2">
+                            <div class="slide absolute inset-0 transition-all duration-500">
+                                <img src="./assets/awards/21.jpg" alt="Cultural Awards" class="w-full h-full object-cover">
+                            </div>
+                            <div class="slide absolute inset-0 transition-all duration-500 opacity-0">
+                                <img src="./assets/awards/22.jpg" alt="Cultural Awards" class="w-full h-full object-cover">
+                            </div>
+                            <div class="slide absolute inset-0 transition-all duration-500 opacity-0">
+                                <img src="./assets/awards/23.jpg" alt="Cultural Awards" class="w-full h-full object-cover">
+                            </div>
+                            <div class="slide absolute inset-0 transition-all duration-500 opacity-0">
+                                <img src="./assets/awards/24.jpg" alt="Cultural Awards" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <div class="slider-nav absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                            <div class="slider-dot w-3 h-3 bg-white bg-opacity-50 rounded-full cursor-pointer active" data-index="0"></div>
+                            <div class="slider-dot w-3 h-3 bg-white bg-opacity-50 rounded-full cursor-pointer" data-index="1"></div>
+                            <div class="slider-dot w-3 h-3 bg-white bg-opacity-50 rounded-full cursor-pointer" data-index="2"></div>
+                            <div class="slider-dot w-3 h-3 bg-white bg-opacity-50 rounded-full cursor-pointer" data-index="3"></div>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 p-8">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-primary bg-opacity-10 text-primary p-2 rounded-full mr-3">
+                                <i class="fas fa-music text-xl"></i>
+                            </div>
+                            <span class="text-sm font-semibold text-primary">CULTURAL ACHIEVEMENT</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-800">21 Medals in Pratibha Karanji Competition</h3>
+                        <p class="text-gray-600 mb-6">Vikas Central School proudly celebrates a vibrant milestone in co-curricular excellence, having won an impressive 21 medals in the Cluster-Level Pratibha Karanji Competition organized by the Government of Karnataka. This outstanding achievement showcases the diverse talents of our students in cultural and creative activities.</p>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <i class="fas fa-calendar-alt mr-2"></i>
+                            <span>Cluster-Level Competition 2022</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Award 3 -->
+            <div class="award-card bg-white rounded-xl shadow-md overflow-hidden mb-16 animate-fade-in delay-300">
+                <div class="md:flex">
+                    <div class="md:w-1/2 p-6 md:p-0 slider-container">
+                        <div class="slider h-80 md:h-full overflow-hidden relative" data-slider-id="3">
+                            <div class="slide absolute inset-0 transition-all duration-500">
+                                <img src="./assets/awards/award3-1.jpg" alt="Kabaddi Competition" class="w-full h-full object-cover">
+                            </div>
+                            <div class="slide absolute inset-0 transition-all duration-500 opacity-0">
+                                <img src="./assets/awards/award3-2.jpg" alt="Kabaddi Competition" class="w-full h-full object-cover">
+                            </div>
+                            <div class="slide absolute inset-0 transition-all duration-500 opacity-0">
+                                <img src="./assets/awards/award3-3.jpg" alt="Kabaddi Competition" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <div class="slider-nav absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                            <div class="slider-dot w-3 h-3 bg-white bg-opacity-50 rounded-full cursor-pointer active" data-index="0"></div>
+                            <div class="slider-dot w-3 h-3 bg-white bg-opacity-50 rounded-full cursor-pointer" data-index="1"></div>
+                            <div class="slider-dot w-3 h-3 bg-white bg-opacity-50 rounded-full cursor-pointer" data-index="2"></div>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 p-8">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-primary bg-opacity-10 text-primary p-2 rounded-full mr-3">
+                                <i class="fas fa-running text-xl"></i>
+                            </div>
+                            <span class="text-sm font-semibold text-primary">SPORTS ACHIEVEMENT</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-800">Cluster-Level Kabaddi Champions</h3>
+                        <p class="text-gray-600 mb-6">On August 23rd, our students demonstrated exceptional skill and teamwork by winning the cluster-level Kabaddi competition. This remarkable achievement qualified them for the taluk-level tournament, showcasing their hard work, determination, and sportsmanship. We are proud of their dedication and look forward to their continued success.</p>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <i class="fas fa-calendar-alt mr-2"></i>
+                            <span>23 August 2022</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Award 4 -->
+            <div class="award-card bg-white rounded-xl shadow-md overflow-hidden mb-16 animate-fade-in delay-400">
+                <div class="md:flex flex-row-reverse">
+                    <div class="md:w-1/2 p-6 md:p-0 slider-container">
+                        <div class="slider h-80 md:h-full overflow-hidden relative" data-slider-id="4">
+                            <div class="slide absolute inset-0 transition-all duration-500">
+                                <img src="./assets/awards/award4-1.jpg" alt="Sprint Competition" class="w-full h-full object-cover">
+                            </div>
+                            <div class="slide absolute inset-0 transition-all duration-500 opacity-0">
+                                <img src="./assets/awards/award4-2.jpg" alt="Sprint Competition" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <div class="slider-nav absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                            <div class="slider-dot w-3 h-3 bg-white bg-opacity-50 rounded-full cursor-pointer active" data-index="0"></div>
+                            <div class="slider-dot w-3 h-3 bg-white bg-opacity-50 rounded-full cursor-pointer" data-index="1"></div>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 p-8">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-primary bg-opacity-10 text-primary p-2 rounded-full mr-3">
+                                <i class="fas fa-trophy text-xl"></i>
+                            </div>
+                            <span class="text-sm font-semibold text-primary">ATHLETICS ACHIEVEMENT</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-800">200m & 400m Sprint Champions</h3>
+                        <p class="text-gray-600 mb-6">Two of our talented athletes secured third place in both the 200-meter and 400-meter sprint events at the cluster-level competition. Their remarkable speed, endurance, and competitive spirit brought honor to our school and demonstrated the effectiveness of our sports training program.</p>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <i class="fas fa-calendar-alt mr-2"></i>
+                            <span>Cluster Athletics Meet 2022</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Grid of Smaller Awards -->
+            <div class="grid md:grid-cols-2 gap-8 mb-16">
+                <!-- Award 5 -->
+                <div class="award-card bg-white rounded-xl shadow-md overflow-hidden animate-fade-in delay-100">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-primary bg-opacity-10 text-primary p-2 rounded-full mr-3">
+                                <i class="fas fa-user-ninja text-xl"></i>
+                            </div>
+                            <span class="text-sm font-semibold text-primary">MARTIAL ARTS</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4 text-gray-800">Bengaluru Open Karate Championship</h3>
+                        <div class="slider-container mb-4 rounded-lg overflow-hidden">
+                            <div class="slider h-48 overflow-hidden relative" data-slider-id="5">
+                                <div class="slide absolute inset-0 transition-all duration-500">
+                                    <img src="./assets/awards/award5-1.jpeg" alt="Karate Championship" class="w-full h-full object-cover">
+                                </div>
+                                <div class="slide absolute inset-0 transition-all duration-500 opacity-0">
+                                    <img src="./assets/awards/award5-2.jpeg" alt="Karate Championship" class="w-full h-full object-cover">
+                                </div>
+                            </div>
+                            <div class="slider-nav absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                                <div class="slider-dot w-3 h-3 bg-white bg-opacity-50 rounded-full cursor-pointer active" data-index="0"></div>
+                                <div class="slider-dot w-3 h-3 bg-white bg-opacity-50 rounded-full cursor-pointer" data-index="1"></div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">Our students made us proud by winning trophies and medals at the Bengaluru Open Karate Championship. Their outstanding performance and fighting spirit stood out among tough competition.</p>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <i class="fas fa-calendar-alt mr-2"></i>
+                            <span>2022 Karate Championship</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Award 6 -->
+                <div class="award-card bg-white rounded-xl shadow-md overflow-hidden animate-fade-in delay-200">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-primary bg-opacity-10 text-primary p-2 rounded-full mr-3">
+                                <i class="fas fa-dancing text-xl"></i>
+                            </div>
+                            <span class="text-sm font-semibold text-primary">DANCE COMPETITION</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4 text-gray-800">Runner-Up in Dance Competition</h3>
+                        <div class="slider-container mb-4 rounded-lg overflow-hidden">
+                            <div class="slider h-48 overflow-hidden relative" data-slider-id="6">
+                                <div class="slide absolute inset-0 transition-all duration-500">
+                                    <img src="./assets/awards/award6-1.png" alt="Dance Competition" class="w-full h-full object-cover">
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">Our students showcased their talent and creativity by securing the runner-up position in a dance competition. Their graceful performances, dedication, and teamwork captivated the audience and judges alike.</p>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <i class="fas fa-calendar-alt mr-2"></i>
+                            <span>2022 Cultural Fest</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Award 7 -->
+                <div class="award-card bg-white rounded-xl shadow-md overflow-hidden animate-fade-in delay-300">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-primary bg-opacity-10 text-primary p-2 rounded-full mr-3">
+                                <i class="fas fa-pen-fancy text-xl"></i>
+                            </div>
+                            <span class="text-sm font-semibold text-primary">HANDWRITING COMPETITION</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4 text-gray-800">Apsara Handwriting Competition Winners</h3>
+                        <div class="slider-container mb-4 rounded-lg overflow-hidden">
+                            <div class="slider h-48 overflow-hidden relative" data-slider-id="7">
+                                <div class="slide absolute inset-0 transition-all duration-500">
+                                    <img src="./assets/awards/award7-1.jpeg" alt="Handwriting Competition" class="w-full h-full object-cover">
+                                </div>
+                                <div class="slide absolute inset-0 transition-all duration-500 opacity-0">
+                                    <img src="./assets/awards/award7-2.jpeg" alt="Handwriting Competition" class="w-full h-full object-cover">
+                                </div>
+                                <div class="slide absolute inset-0 transition-all duration-500 opacity-0">
+                                    <img src="./assets/awards/award7-3.jpeg" alt="Handwriting Competition" class="w-full h-full object-cover">
+                                </div>
+                            </div>
+                            <div class="slider-nav absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                                <div class="slider-dot w-3 h-3 bg-white bg-opacity-50 rounded-full cursor-pointer active" data-index="0"></div>
+                                <div class="slider-dot w-3 h-3 bg-white bg-opacity-50 rounded-full cursor-pointer" data-index="1"></div>
+                                <div class="slider-dot w-3 h-3 bg-white bg-opacity-50 rounded-full cursor-pointer" data-index="2"></div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">Our children were delighted to receive goodies and gifts from Apsara Company for their outstanding performance in a handwriting competition. This recognition celebrates their neatness, consistency, and dedication to excellence in written communication.</p>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <i class="fas fa-calendar-alt mr-2"></i>
+                            <span>2022 Handwriting Competition</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Award 8 -->
+                <div class="award-card bg-white rounded-xl shadow-md overflow-hidden animate-fade-in delay-400">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-primary bg-opacity-10 text-primary p-2 rounded-full mr-3">
+                                <i class="fas fa-flask text-xl"></i>
+                            </div>
+                            <span class="text-sm font-semibold text-primary">SCIENCE INNOVATION</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4 text-gray-800">INSPIRE Awards - MANAK 2023-24</h3>
+                        <div class="slider-container mb-4 rounded-lg overflow-hidden">
+                            <div class="slider h-48 overflow-hidden relative" data-slider-id="8">
+                                <div class="slide absolute inset-0 transition-all duration-500">
+                                    <img src="./assets/awards/award8-1.jpg" alt="INSPIRE Awards" class="w-full h-full object-cover">
+                                </div>
+                                <div class="slide absolute inset-0 transition-all duration-500 opacity-0">
+                                    <img src="./assets/awards/award8-2.jpg" alt="INSPIRE Awards" class="w-full h-full object-cover">
+                                </div>
+                                <div class="slide absolute inset-0 transition-all duration-500 opacity-0">
+                                    <img src="./assets/awards/award8-3.jpg" alt="INSPIRE Awards" class="w-full h-full object-cover">
+                                </div>
+                            </div>
+                            <div class="slider-nav absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                                <div class="slider-dot w-3 h-3 bg-white bg-opacity-50 rounded-full cursor-pointer active" data-index="0"></div>
+                                <div class="slider-dot w-3 h-3 bg-white bg-opacity-50 rounded-full cursor-pointer" data-index="1"></div>
+                                <div class="slider-dot w-3 h-3 bg-white bg-opacity-50 rounded-full cursor-pointer" data-index="2"></div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">Our students Kumar Prajwal Y (Class 10) and Deepak S (Class 8) have been honored with the INSPIRE Awards - MANAK 2023-24, a prestigious initiative by the Department of Science & Technology, Government of India. Each received ₹10,000 to develop innovative science projects.</p>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <i class="fas fa-calendar-alt mr-2"></i>
+                            <span>2023-24 Academic Year</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-16 bg-gradient-to-r from-primary to-secondary text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Achievements in Numbers</h2>
+                <p class="max-w-2xl mx-auto opacity-90">The collective efforts of our students, teachers, and staff have resulted in these remarkable accomplishments.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-4 gap-8 text-center">
+                <div class="animate-fade-in">
+                    <div class="text-5xl font-bold mb-2">100%</div>
+                    <div class="text-lg opacity-90">SSLC Results</div>
+                </div>
+                <div class="animate-fade-in delay-100">
+                    <div class="text-5xl font-bold mb-2">21</div>
+                    <div class="text-lg opacity-90">Cultural Medals</div>
+                </div>
+                <div class="animate-fade-in delay-200">
+                    <div class="text-5xl font-bold mb-2">5+</div>
+                    <div class="text-lg opacity-90">Sports Championships</div>
+                </div>
+                <div class="animate-fade-in delay-300">
+                    <div class="text-5xl font-bold mb-2">2</div>
+                    <div class="text-lg opacity-90">National Level Awards</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <span class="inline-block bg-primary bg-opacity-10 text-primary px-4 py-1 rounded-full text-sm font-semibold mb-3">TESTIMONIALS</span>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 gradient-text">What People Say About Us</h2>
+                <p class="max-w-2xl mx-auto text-gray-600">Hear from our students, parents, and faculty about their experiences with Vikas Central School.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-8 rounded-xl shadow-sm hover:shadow-md transition duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-primary bg-opacity-10 flex items-center justify-center text-primary mr-4">
+                            <i class="fas fa-quote-left text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800">Ramesh Kumar</h4>
+                            <p class="text-sm text-gray-500">Parent of Class 10 Student</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"The 100% SSLC results are a testament to the dedication of Vikas Central School teachers. My child's academic growth has been remarkable."</p>
+                    <div class="flex mt-4">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-xl shadow-sm hover:shadow-md transition duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-primary bg-opacity-10 flex items-center justify-center text-primary mr-4">
+                            <i class="fas fa-quote-left text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800">Priya Sharma</h4>
+                            <p class="text-sm text-gray-500">Dance Competition Participant</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Winning the runner-up position in the dance competition was an unforgettable experience. The school's support for extracurricular activities is amazing."</p>
+                    <div class="flex mt-4">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-xl shadow-sm hover:shadow-md transition duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-primary bg-opacity-10 flex items-center justify-center text-primary mr-4">
+                            <i class="fas fa-quote-left text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800">Dr. Sunil Rao</h4>
+                            <p class="text-sm text-gray-500">Sports Coach</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"The Kabaddi team's victory at cluster level shows what discipline and teamwork can achieve. Vikas Central School provides excellent sports facilities."</p>
+                    <div class="flex mt-4">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star-half-alt text-yellow-400"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-md overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-1/3 bg-primary p-8 text-white flex flex-col justify-center">
+                        <div class="mb-4">
+                            <i class="fas fa-envelope-open-text text-4xl mb-2"></i>
+                            <h3 class="text-2xl font-bold">Stay Updated</h3>
+                        </div>
+                        <p class="opacity-90">Subscribe to our newsletter to receive updates on our latest achievements and school events.</p>
+                    </div>
+                    <div class="md:w-2/3 p-8">
+                        <form class="newsletter-form">
+                            <div class="mb-4">
+                                <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Your Name</label>
+                                <input class="newsletter-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" id="name" type="text" placeholder="Enter your name">
+                            </div>
+                            <div class="mb-6">
+                                <label class="block text-gray-700 text-sm font-bold mb-2" for="email">Email Address</label>
+                                <input class="newsletter-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" id="email" type="text" placeholder="Enter your email">
+                            </div>
+                            <button class="w-full bg-primary hover:bg-secondary text-white font-bold py-3 px-4 rounded-lg transition duration-300" type="submit">
+                                Subscribe Now
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <img src="images/vikas-logo.png" alt="Vikas Central School Logo" class="h-16 mb-4">
+                    <p class="text-gray-400 mb-4">Empower young minds at Vikas Central School through holistic learning experiences and inclusive educational strategies.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="social-icon text-gray-400 hover:text-white">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon text-gray-400 hover:text-white">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon text-gray-400 hover:text-white">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="social-icon text-gray-400 hover:text-white">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="footer-link text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="about.html" class="footer-link text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="academics.html" class="footer-link text-gray-400 hover:text-white">Academics</a></li>
+                        <li><a href="awards.html" class="footer-link text-gray-400 hover:text-white">Awards</a></li>
+                        <li><a href="event.html" class="footer-link text-gray-400 hover:text-white">Events</a></li>
+                        <li><a href="contact.html" class="footer-link text-gray-400 hover:text-white">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Academics</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="footer-link text-gray-400 hover:text-white">Curriculum</a></li>
+                        <li><a href="#" class="footer-link text-gray-400 hover:text-white">Teaching Methodology</a></li>
+                        <li><a href="#" class="footer-link text-gray-400 hover:text-white">Faculty</a></li>
+                        <li><a href="#" class="footer-link text-gray-400 hover:text-white">Academic Calendar</a></li>
+                        <li><a href="#" class="footer-link text-gray-400 hover:text-white">Results</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Contact Us</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-primary mt-1 mr-3"></i>
+                            <span class="text-gray-400">No 46, 47, 60 Feet Rd, J.C Nagar Kurubarahalli, Bengaluru Karnataka 560086</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone text-primary mr-3"></i>
+                            <span class="text-gray-400">080-29552608</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-primary mr-3"></i>
+                            <span class="text-gray-400">vikascentralschool@gmail.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-500 mb-4 md:mb-0">&copy; 2025 Vikas Central School. All rights reserved.</p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-gray-500 hover:text-white">Privacy Policy</a>
+                        <a href="#" class="text-gray-500 hover:text-white">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" id="back-to-top" class="back-to-top fixed bottom-8 right-8 bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:bg-secondary transition duration-300 hidden">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu Toggle
+            const menuBtn = document.getElementById('menuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            if (menuBtn && mobileMenu) {
+                menuBtn.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+            
+            // Image Sliders
+            const sliders = document.querySelectorAll('.slider-container');
+            
+            sliders.forEach(container => {
+                const slider = container.querySelector('.slider');
+                const slides = container.querySelectorAll('.slide');
+                const dots = container.querySelectorAll('.slider-dot');
+                let currentIndex = 0;
+                let interval;
+                
+                function updateSlider() {
+                    slides.forEach((slide, index) => {
+                        if (index === currentIndex) {
+                            slide.classList.remove('opacity-0');
+                        } else {
+                            slide.classList.add('opacity-0');
+                        }
+                    });
+                    
+                    if (dots) {
+                        dots.forEach((dot, index) => {
+                            if (index === currentIndex) {
+                                dot.classList.add('active');
+                                dot.classList.remove('bg-opacity-50');
+                                dot.classList.add('bg-opacity-100');
+                            } else {
+                                dot.classList.remove('active');
+                                dot.classList.add('bg-opacity-50');
+                                dot.classList.remove('bg-opacity-100');
+                            }
+                        });
+                    }
+                }
+                
+                function nextSlide() {
+                    currentIndex = (currentIndex + 1) % slides.length;
+                    updateSlider();
+                }
+                
+                // Initialize slider
+                if (slides.length > 1) {
+                    interval = setInterval(nextSlide, 5000);
+                    
+                    // Pause on hover
+                    container.addEventListener('mouseenter', () => clearInterval(interval));
+                    container.addEventListener('mouseleave', () => {
+                        interval = setInterval(nextSlide, 5000);
+                    });
+                    
+                    // Dot navigation
+                    if (dots) {
+                        dots.forEach(dot => {
+                            dot.addEventListener('click', function() {
+                                currentIndex = parseInt(this.getAttribute('data-index'));
+                                updateSlider();
+                                clearInterval(interval);
+                                interval = setInterval(nextSlide, 5000);
+                            });
+                        });
+                    }
+                }
+                
+                updateSlider();
+            });
+            
+            // Back to Top Button
+            const backToTopBtn = document.getElementById('back-to-top');
+            
+            if (backToTopBtn) {
+                window.addEventListener('scroll', function() {
+                    if (window.scrollY > 300) {
+                        backToTopBtn.classList.remove('hidden');
+                    } else {
+                        backToTopBtn.classList.add('hidden');
+                    }
+                });
+                
+                backToTopBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+            
+            // Animate elements when they come into view
+            const animateOnScroll = function() {
+                const elements = document.querySelectorAll('.animate-fade-in');
+                
+                elements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.2;
+                    
+                    if (elementPosition < screenPosition) {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+            
+            window.addEventListener('scroll', animateOnScroll);
+            animateOnScroll(); // Run once on load
+        });
+    </script>
+</body>
+</html>
