@@ -1189,7 +1189,7 @@ header .main-menu .menu_cart .check_out {
 
 .header-two .main-menu ul li a {
     color: #fff !important;
-    padding: 25px 15px;
+    padding: 5px 15px;
 }
 
 .header-two .main-menu ul li ul li a {
@@ -1211,7 +1211,7 @@ header .main-menu .menu_cart .check_out {
 .header-two .main-menu .menu-search {
     color: #fff;
     border: 2px solid #fff;
-    margin: 15px 0px 15px 18px;
+    margin: 5px 0px 5px 18px;
 }
 
 .header-two .main-menu .menu_cart>span {
@@ -1639,7 +1639,7 @@ header .main-menu .menu_cart .check_out {
 }
 
 .page-header .overlay {
-    padding: 105px 0px;
+    padding: 20px 0px;
     background-color: #4107f0;
     text-align: center;
 }
