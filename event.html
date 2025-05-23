@@ -948,13 +948,16 @@
                     const galleryItem = document.createElement('div');
                     galleryItem.className = 'gallery-item';
                     galleryItem.innerHTML = `
-                    <img src="${event.images[index]}" alt="${event.title}">
+                    <a href="${event.images[index]}">
+                        <img src="${event.images[index]}" alt="${event.title}">
+                    </a>
+
                     <div class="event-date">${event.date}</div>
                 `;
 
-                    galleryItem.addEventListener('click', () => {
-                        modalMainImage.src = `http://127.0.0.1:5500/assets/steps/?${event.images[index]}}`;
-                    });
+                    // galleryItem.addEventListener('click', () => {
+                    //     modalMainImage.src = `${event.images[index]}}`;
+                    // });
 
                     modalGallery.appendChild(galleryItem);
                 });
