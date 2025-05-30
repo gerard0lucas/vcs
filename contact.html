@@ -267,26 +267,175 @@
 
 
   
+    <style>
+        .addmisian-subscribe {
+            padding: 50px 20px;
+            color: white;
+        }
+
+        .addmisian-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .addmisian-popup-content {
+            background: #ffc0cb;
+            padding: 30px 20px;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 100%;
+            text-align: left;
+            position: relative;
+        }
+
+        .addmisian-popup-content h3 {
+            text-align: center;
+            margin-top: 0;
+            color: #000;
+            font-size: 22px;
+            width: 100%;
+        }
+
+        .addmisian-popup-content label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+
+        .addmisian-popup-content input,
+        .addmisian-popup-content select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .addmisian-popup-content button {
+            margin-top: 20px;
+            padding: 12px;
+            width: 100%;
+            background-color: #92278f;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .addmisian-close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 22px;
+            color: #000;
+            cursor: pointer;
+        }
+
+        .addmisian-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        .addmisian-row>div {
+            flex: 1;
+        }
+    </style>
+
+
+
+
     <!-- Subscribe Start here -->
     <section class="subscribe subscribe-two">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-5 col-xs-12">
-                    <h3>For Admission Enquiry</h3>
-                </div>
-                <div class="col-lg-7 col-xs-12">
-                    <form action="/">
-                        <input type="text" placeholder="Enter your e-mail here">
-                        <input type="submit" value="Subscribe Now">
-                    </form>
+            <div style="display: flex; flex-direction: column; align-items: center; " class="row">
+                <div style="text-align: center;" class="col-lg-10 col-xs-12">
+                    <h3 style="width: 100%;">Have Questions About the Admission Process?</h3>
+                    <p style="color: #ffffff; width: 100%; ">We’re here to assist you with any queries regarding
+                        courses, eligibility, or documents.
+                    </p>
+                    <p>
+                        <a id="addmisian-openPopupd"
+                            style="cursor: pointer; background-color: #fff; color: #92278f; padding: 15px 40px; border-radius: 8px;">
+                            Enroll Now</a>
+                    </p>
                 </div>
             </div>
-            <!-- row -->
         </div>
-        <!-- container -->
     </section>
-    <!-- subscribe -->
-    <!-- Subscribe End here -->
+
+
+    <div id="addmisian-popupForm" class="addmisian-popup">
+        <div class="addmisian-popup-content">
+            <span class="addmisian-close-btn" onclick="addmisianClosePopup()">&times;</span>
+            <h3>Admissions Open for 2025-26</h3>
+            <form>
+                <div class="addmisian-row">
+                    <div>
+                        <label>Parent Name *</label>
+                        <input type="text" required placeholder="Parent Name">
+                    </div>
+                    <div>
+                        <label>Child Name *</label>
+                        <input type="text" required placeholder="Child Name">
+                    </div>
+                </div>
+                <div class="addmisian-row">
+                    <div>
+                        <label>Mobile No. *</label>
+                        <input type="tel" required placeholder="Mobile No">
+                    </div>
+                    <div>
+                        <label>Email</label>
+                        <input type="email" placeholder="your@email.com">
+                    </div>
+                </div>
+                <div class="addmisian-row">
+                    <div>
+                        <label>Select City *</label>
+                        <input type="text" required placeholder="City">
+                    </div>
+                    <div>
+                        <label>Select Branch *</label>
+                        <input type="text" required placeholder="Branch">
+                    </div>
+                </div>
+                <div>
+                    <label>Select Grade *</label>
+                    <input type="text" required placeholder="Grade">
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Script -->
+    <script>
+        const addmisianPopup = document.getElementById("addmisian-popupForm");
+        const addmisianOpenBtn = document.getElementById("addmisian-openPopupd");
+
+        addmisianOpenBtn.addEventListener("click", () => {
+            addmisianPopup.style.display = "flex";
+        });
+
+        function addmisianClosePopup() {
+            addmisianPopup.style.display = "none";
+        }
+
+        window.onclick = function (e) {
+            if (e.target === addmisianPopup) {
+                addmisianPopup.style.display = "none";
+            }
+        };
+    </script>
 
 
      <!-- Footer Start here -->
